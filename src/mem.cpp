@@ -1,27 +1,32 @@
 #include <PCC/mem.h>
 #include <sys/shm.h>
 #include <stdio.h>
-#include <stdlib.h>4 
-PCC_MEM::PCC_MEM():
-    m_pshm(nullptr),
-    m_nshmid(-1)
-{
+#include <stdlib.h>
 
-}
-PCC_MEM::~PCC_MEM()
+void * g_pshm;;
+int g_nshmid;
+int initpcount;
+
+int init(int pid,int tid)
 {
-    //释放资源
-}
-int PCC_MEM::init(int pid,int tid)
-{
-    m_nshmid = shmget(PCC_MEM_KEY,(sizeof(memblock)*1024),IPC_CREAT);
-    if(m_nshmid == -1)
+    
+    g_nshmid = shmget(PCC_MEM_KEY,(sizeof(memblock)*1024),IPC_CREAT);
+    if(g_nshmid == -1)
     {
         fprintf(stderr, "shmat failed\n");
     }
     else
     {
-        m_pshm = shmat(m_nshmid,0,0);
+        g_pshm = shmat(g_nshmid,0,0);
+        if(g_pshm != nullptr)
+        {
+            return g_nshmid;
+        }
     }
+    return -1;
 
+}
+void*  getp()
+{
+    return g_pshm;
 }
