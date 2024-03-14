@@ -49,5 +49,6 @@ struct memblock
 
 
 
+typedef int(*CALLBACK)(void);
 
 #endif //_PCC_TYPE_H_

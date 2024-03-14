@@ -2,7 +2,6 @@
 #include<sys/signal.h>
 #include "PCC/type.h"
 
-typedef int(*CALLBACK)(void);
 
 int init_signal();
 
