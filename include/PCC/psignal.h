@@ -14,5 +14,5 @@ int send_signal(pcc_obj obj);
 /// @brief 注册回调函数
 /// @param  函数指针
 /// @return 1成功   -1失败
-int register_callback(CALLBACK *callback);
+int register_callback(CALLBACK callback);
 
