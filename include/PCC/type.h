@@ -1,5 +1,5 @@
-#pragma once
-
+#ifndef _PCC_TYPE_H_
+#define _PCC_TYPE_H_
 #include <sys/signal.h>
 #define SIG_MSG_SEND 60
 
@@ -17,7 +17,6 @@ enum msg_value_type
     t_i32,
     t_ui8,
     t_ui16,
-    t_ui32,
     t_ui32,
     t_float,
 };
@@ -47,3 +46,8 @@ struct memblock
     int     tid;
     unsigned char msgbuff[MSG_MAX_COUNT];
 };
+
+
+
+
+#endif //_PCC_TYPE_H_
