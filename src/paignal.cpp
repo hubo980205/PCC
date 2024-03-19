@@ -1,9 +1,10 @@
 #include "PCC/psignal.h"
 #include "PCC/type.h"
 #include <stdio.h>
+
+
+
 CALLBACK  g_callback;
-
-
 
 void readmsgcallback(int sig)
 {
@@ -15,16 +16,11 @@ int init_signal()
 {
     signal(SIG_MSG_SEND, readmsgcallback);
 }
-
 int send_signal(pcc_obj obj)
 {
-
     //todo 找到对象是进程还是线程
-    
     /*线程*/
-    {
-
-    }
+    {}
     /*进程*/
     {
         //todo 判断线程是否存在
@@ -37,9 +33,6 @@ int send_signal(pcc_obj obj)
     }
     return 1;
 }
-
-
-
 int register_callback(CALLBACK callback)
 {
     if(callback != NULL)
