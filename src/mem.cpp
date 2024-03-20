@@ -10,7 +10,7 @@ int initpcount;
 int init(int pid,int tid)
 {
     
-    g_nshmid = shmget(PCC_MEM_KEY,(sizeof(memblock)*1024),IPC_CREAT);
+    g_nshmid = shmget(PCC_MEM_KEY,(sizeof(mem_obj_head)*MSG_MAX_LEN)+(sizeof(mem_block_head)*MSG_MAX_LEN)+(sizeof(syn_block)*MSG_MAX_LEN),IPC_CREAT);
     if(g_nshmid == -1)
     {
         fprintf(stderr, "shmat failed\n");
